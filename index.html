@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bientôt l'Histoire du Toursky</title>
+    <style>
+        /* Style général de la page */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111; /* Fond sombre style théâtre */
+            color: #FFD700; /* Couleur or pour le texte */
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        /* Rideau style théâtre */
+        .curtain {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background-color: #800000; /* Rouge sombre */
+            top: 0;
+            transition: all 2s ease;
+            z-index: 2;
+        }
+
+        .curtain.left {
+            left: 0;
+        }
+
+        .curtain.right {
+            right: 0;
+        }
+
+        /* Texte central */
+        .stage-text {
+            position: relative;
+            font-size: 3rem;
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        /* Effet fade-in du texte */
+        .show-text {
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+    <div class="stage-text" id="text">Bientôt : L'histoire du Toursky</div>
+
+    <script>
+        // JavaScript pour ouvrir le rideau et montrer le texte
+        window.addEventListener('load', () => {
+            const leftCurtain = document.querySelector('.curtain.left');
+            const rightCurtain = document.querySelector('.curtain.right');
+            const text = document.getElementById('text');
+
+            // Ouvrir le rideau après 1 seconde
+            setTimeout(() => {
+                leftCurtain.style.width = '0';
+                rightCurtain.style.width = '0';
+            }, 1000);
+
+            // Afficher le texte après 2 secondes
+            setTimeout(() => {
+                text.classList.add('show-text');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
